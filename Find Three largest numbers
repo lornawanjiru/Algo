@@ -1,0 +1,26 @@
+function findThreeLargestNumbers(array) {
+  
+  //Declaring the three variables we will be using:-
+  
+	let first,second,third;
+  
+ //Initializing them with the min number in the array. I used a spread operator to remove all the array elements hence will be dealt with 
+  //individually making it easier to get the min number.
+  
+	third = first = second = Math.min(...array);
+  
+  //iterating in the loop
+	for(let i = 0; i<array.length; i++){
+  
+  //defining the current element on the array it being array[i]
+		if(array[i] > first){
+    //this is very important. be keen
+		    third = second;
+				second = first;
+				first = array[i];
+		}
+
+
+Time complexity = O(n)
+
+Space complexity = O(1)
