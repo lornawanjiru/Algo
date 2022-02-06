@@ -1,0 +1,15 @@
+function caesarCipherEncryptor(string, key) {
+  let Newletter = [];
+	let newkey = key % 26;
+	for (let letter of string){
+	   Newletter.push(getNewletter(letter,newkey))
+	}
+	return Newletter.join("");
+}
+function getNewletter(letter,key){
+   let NewletterCode = letter.charCodeAt()+key;
+	 return NewletterCode <= 122 ? String.fromCharCode(NewletterCode): String.fromCharCode(96+NewletterCode%122)
+}
+
+// Do not edit the line below.
+exports.caesarCipherEncryptor = caesarCipherEncryptor;
