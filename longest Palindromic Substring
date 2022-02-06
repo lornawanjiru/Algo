@@ -1,0 +1,45 @@
+function longestPalindromicSubstring(string) {
+  let longest = '';
+	for(let i = 0; i<string.length; i++ ){
+	   for(let j = i; j<string.length; j++){
+		  const substring = string.slice(i,j+1)
+			 if(substring.length > longest.length && isPalidrome(substring)){
+			    longest = substring;
+			 }
+		 }
+	}
+	return longest;
+}
+function isPalidrome(string){
+   let left = 0;
+	 let right = string.length - 1;
+	 while(left < right){
+	   if(string[right] !== string[left]) return false;
+		 left ++;
+		 right --;
+	 }
+	 return true;
+}
+
+
+
+function longestPalindromicSubstring(string) {
+  let longest = [0,1];
+	for(let i = 1; i<string.length; i++){
+	   let odd = getPalidrome(string, i-1, i+1);
+		 let even = getPalidrome(string, i-1, i);
+		 let cur = odd[1]-odd[0]>even[1]-even[0]?odd:even;
+		 longest = longest[1]-longest[0]>cur[1]-cur[0]?longest:cur;
+	}
+	return string.slice(longest[0],longest[1]);
+}
+function getPalidrome(string, left, right){
+   while(left>=0 && right<string.length){
+	  if(string[left] !== string[right]){
+		   break;
+		}
+		left --;
+		right ++
+	 }
+	return [left+1,right] 
+}
